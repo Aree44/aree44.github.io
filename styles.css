@@ -1,6 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #ecf0f1;
+    background-color: #484a4a;
     color: #333;
     text-align: center;
     margin-top: 20px;
@@ -29,7 +29,7 @@ h1 {
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
-    background-color: #34495e;
+    background-color: #186930;
     color: white;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: inline-block;
