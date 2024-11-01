@@ -76,7 +76,7 @@ consoles.forEach(consoleDiv => {
         errorMessageDiv.textContent = ""; // Clear any previous error message
 
         if (isNaN(costPerHour) || costPerHour <= 0) {
-            errorMessageDiv.textContent = "Please select a valid console.";
+            errorMessageDiv.textContent = "Please select a valid Type.";
             return;
         }
 
