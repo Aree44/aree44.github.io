@@ -22,7 +22,7 @@ const createConsoleSection = (index) => `
             <option value="0">Select...</option>
             <option value="2000">PS4 (2000 IQD/hour)</option>
             <option value="3000">PS5 (3000 IQD/hour)</option>
-            <option value="375">FIFA (1000 IQD for 16 min)</option>
+            <option value="1500">PS4X (1500 IQD/hour)</option>
         </select>
         <div class="errorMessage" style="color: red;"></div>
         <div class="currentCost">Current Cost: ${formatCost(0)}</div>
@@ -80,11 +80,8 @@ consoles.forEach(consoleDiv => {
             return;
         }
 
-        if (costPerHour === 375) {
-            incrementPerSecond = 1000 / 960;
-        } else {
-            incrementPerSecond = costPerHour / 3600;
-        }
+        // Set increment per second based on the hourly rate
+        incrementPerSecond = costPerHour / 3600;
 
         startButton.disabled = true;
         pauseButton.disabled = false;
