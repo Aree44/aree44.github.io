@@ -23,15 +23,15 @@ input:disabled {
 
 footer {
     text-align: center;
-    padding: 8px;
+    padding: 5px;
     background-color: #2c3e50;
     color: white;
     position: fixed;
     bottom: 0;
     left: 0;  /* Ensure footer starts at the left edge */
     width: 100%;
-    font-size: 20px;
-    border-top: 1px solid #34495e;
+    font-size: 24px;
+    border-top: 0.5px solid #34495e;
 }
 footer a {
     color: #ecf0f1;
