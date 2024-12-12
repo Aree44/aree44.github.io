@@ -30,7 +30,7 @@ footer {
     bottom: 0;
     left: 0;  /* Ensure footer starts at the left edge */
     width: 100%;
-    font-size: 24px;
+    font-size: 12px;
     font-weight: bold;
     border-top: 0.5px solid #34495e;
 }
