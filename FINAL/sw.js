@@ -1,20 +1,20 @@
-const CACHE_NAME = "toxic-game-center-cache-v1";
-const urlsToCache = [
+const CACHE_NAME = "v1";
+const ASSETS_TO_CACHE = [
+    "/",
     "/index.html",
     "/styles.css",
     "/script.js",
-    "/icons/icon-192x192.jpg",
-    "/icons/icon-512x512.jpg"
+    "/lo1.jpg",
 ];
 
-// Install the service worker and cache resources
 self.addEventListener("install", (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME).then((cache) => {
-            return cache.addAll(urlsToCache);
+            return cache.addAll(ASSETS_TO_CACHE);
         })
     );
 });
+
 
 // Serve cached resources
 self.addEventListener("fetch", (event) => {
