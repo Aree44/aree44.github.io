@@ -192,9 +192,11 @@ document.addEventListener('DOMContentLoaded', () => {
 resetButton.addEventListener('click', () => {
     if (confirm("Do you really want to reset?")) {
         clearInterval(intervalId); // Stop the timer
-        counter = 0;
-        totalSeconds = 0;
-        alertTriggered = false;
+        intervalId = null; // Ensure no interval is running
+        startTimestamp = null; // Reset the start timestamp
+        counter = 0; // Reset the cost counter
+        totalSeconds = 0; // Reset the timer seconds
+        alertTriggered = false; // Reset the alert trigger flag
 
         // Reset the displayed timer and cost
         timerDiv.textContent = "00:00:00";
@@ -205,7 +207,7 @@ resetButton.addEventListener('click', () => {
         consoleSelect.selectedIndex = 0;
         consoleSelect.disabled = false;
         nameInput.disabled = false;
-        nameInput.value = "";
+        nameInput.value = ""; // Clear the name field
         alertTimeInput.value = "";
         alertTimeInput.disabled = false;
 
@@ -221,6 +223,7 @@ resetButton.addEventListener('click', () => {
         saveState(); // Save the reset state (which is now zeroed out)
     }
 });
+
 
 
         const removeConsoleButton = consoleDiv.querySelector('.removeConsoleButton');
