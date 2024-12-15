@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const alertTimeInput = consoleDiv.querySelector('.alertTimeInput');
         const stopAlertButton = consoleDiv.querySelector('.stopAlertButton');
 
-        const alertSound = new Audio('alert-sound.mp3');
+        const alertSound = new Audio('alert-sound.aac');
         alertSound.loop = true;
 
         function updateDisplay() {
