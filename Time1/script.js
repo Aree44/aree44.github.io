@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <option value="0">Select...</option>
                 <option value="2000">PS4 (2000 IQD/hour)</option>
                 <option value="3000">PS5 (3000 IQD/hour)</option>
-                <option value="1500">PS4X (1500 IQD/hour)</option>
+                <option value="1500">PS4XX (1500 IQD/hour)</option>
             </select>
             <div class="errorMessage" style="color: red;"></div>
             <div class="currentCost">Current Cost: ${formatCost(0)}</div>
