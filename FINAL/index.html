@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxic Game Center</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="lo1.jpg">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Meta Theme Color -->
+    <meta name="theme-color" content="#4CAF50">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="container">
+
+    <!-- Header Section -->
+    <header class="text-center my-4">
+        <img src="lo1.jpg" alt="Toxic Game Center Logo" class="logo img-fluid rounded-circle">
+        <h1 class="mt-3">Toxic Game Center</h1>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="text-center mb-4">
+            <button class="btn btn-dark" id="addConsoleButton">+ Add Console</button>
+        </div>
+        <div id="consolesContainer" class="row gy-3"></div> <!-- Container to hold the consoles -->
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="text-center mt-4">
+        <p>Created by Ari | 
+            <a href="https://t.me/aree_jamshid" target="_blank" class="text-decoration-none">Telegram</a>
+        </p>
+    </footer>
+    
+    <!-- Service Worker Registration -->
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js') // Use './' if in the same directory
+        .then(() => console.log('Service Worker Registered'))
+        .catch(error => console.error('Service Worker Registration Failed:', error));
+}
+</script>
+
+
+    <!-- Custom Script -->
+    <script src="script.js"></script>
+</body>
+</html>
