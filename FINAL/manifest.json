@@ -1,6 +1,6 @@
 {
   "name": "Toxic Game Center",
-  "short_name": "Game Center",
+  "short_name": "Toxic Game Center",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#ffffff",
