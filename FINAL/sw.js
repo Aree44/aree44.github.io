@@ -1,4 +1,4 @@
-const CACHE_NAME = "v2"; // Increment the version when files change
+const CACHE_NAME = "v3"; // Increment the version when files change
 const ASSETS_TO_CACHE = [
     "/",
     "/index.html",
