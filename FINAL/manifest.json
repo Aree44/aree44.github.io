@@ -1,11 +1,11 @@
 {
   "name": "Toxic Game Center",
   "short_name": "TGC",
-  "description": "Game Center console management tool.",
   "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#8ec5fc",
+  "description": "Game Center console management tool.",
   "icons": [
     {
       "src": "icons/icon-192x192.jpg",
