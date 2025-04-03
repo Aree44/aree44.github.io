@@ -47,35 +47,43 @@
                     const parser = new DOMParser();
                     const doc = parser.parseFromString(text, 'text/html');
 
-                    // Try to find the countdown date
-                    const countdownDate = doc.querySelector('#endDateS') ? doc.querySelector('#endDateS').value : null;
+                    // Check if there's an icon indicating success (adjust the selector as necessary)
+                    const successIcon = doc.querySelector('.icon-success'); // Modify selector based on actual HTML structure
 
                     let statusText = "Not Available";  // Default status if no countdown found
 
-                    if (countdownDate) {
-                        // Calculate remaining time if countdown date is found
-                        const dateEndRes = new Date(countdownDate.replaceAll('-', '/'));
-                        const now = new Date();
-                        const distance = dateEndRes - now;
+                    if (successIcon) {
+                        // If success icon is found, set status as "Delivered"
+                        statusText = "Delivered";
+                    } else {
+                        // Try to find the countdown date if no success icon
+                        const countdownDate = doc.querySelector('#endDateS') ? doc.querySelector('#endDateS').value : null;
 
-                        if (distance >= 0) {
-                            let cal = distance;
-                            let newDay = (cal - (cal % 86400000)) / 86400000;
-                            cal = cal % 86400000;
+                        if (countdownDate) {
+                            // Calculate remaining time if countdown date is found
+                            const dateEndRes = new Date(countdownDate.replaceAll('-', '/'));
+                            const now = new Date();
+                            const distance = dateEndRes - now;
 
-                            let newHours = (cal - (cal % 3600000)) / 3600000;
-                            cal = cal % 3600000;
+                            if (distance >= 0) {
+                                let cal = distance;
+                                let newDay = (cal - (cal % 86400000)) / 86400000;
+                                cal = cal % 86400000;
 
-                            let newMinuts = (cal - (cal % 60000)) / 60000;
-                            cal = cal % 60000;
+                                let newHours = (cal - (cal % 3600000)) / 3600000;
+                                cal = cal % 3600000;
 
-                            let newSecounds = (cal - (cal % 1000)) / 1000;
+                                let newMinuts = (cal - (cal % 60000)) / 60000;
+                                cal = cal % 60000;
 
-                            // Update the status text with countdown info
-                            statusText = `${newDay} Days ${newHours} Hours ${newMinuts} Minutes ${newSecounds} Seconds`;
-                        } else {
-                            // If countdown time has passed, set an appropriate message
-                            statusText = "Delivered";
+                                let newSecounds = (cal - (cal % 1000)) / 1000;
+
+                                // Update the status text with countdown info
+                                statusText = `${newDay} Days ${newHours} Hours ${newMinuts} Minutes ${newSecounds} Seconds`;
+                            } else {
+                                // If countdown time has passed, set an appropriate message
+                                statusText = "Status: Delivered";
+                            }
                         }
                     }
 
