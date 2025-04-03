@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulk Order Tracker</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        textarea, button { margin: 5px; padding: 10px; width: 80%; }
+        table { width: 80%; margin: auto; border-collapse: collapse; }
+        th, td { border: 1px solid black; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Key World Cargo - Bulk Tracker</h2>
+    <textarea id="trackingNumbers" rows="5" placeholder="Enter tracking numbers, one per line"></textarea>
+    <br>
+    <button onclick="trackOrders()">Track Orders</button>
+    <br><br>
+    <table>
+        <thead>
+            <tr>
+                <th>Tracking Number</th>
+                <th>Status</th>
+                <th>Last Update</th>
+            </tr>
+        </thead>
+        <tbody id="orderResults"></tbody>
+    </table>
+
+    <script>
+        async function trackOrders() {
+            const proxyUrl = "https://cors-anywhere.herokuapp.com/";  // Alternative CORS proxy (CORS Anywhere)
+            const trackingNumbers = document.getElementById('trackingNumbers').value.split("\n")
+                .map(t => t.trim()).filter(t => t);
+            const resultsTable = document.getElementById('orderResults');
+            resultsTable.innerHTML = "";
+
+            for (const number of trackingNumbers) {
+                // Properly format the tracking URL with one `?` separating the base and query parameters
+                const targetUrl = `https://key-world-cargo.com/?code=${encodeURIComponent(number)}&btnSearch=${encodeURIComponent('%DA%گ%DB%95%DA%95%D8%A7%D9%86')}`;
+
+                try {
+                    // Make the request with the formatted URL
+                    const response = await fetch(proxyUrl + targetUrl);
+                    const text = await response.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(text, 'text/html');
+
+                    // Try to find the countdown date
+                    const countdownDate = doc.querySelector('#endDateS') ? doc.querySelector('#endDateS').value : null;
+
+                    let statusText = "Not Available";  // Default status if no countdown found
+
+                    if (countdownDate) {
+                        // Calculate remaining time if countdown date is found
+                        const dateEndRes = new Date(countdownDate.replaceAll('-', '/'));
+                        const now = new Date();
+                        const distance = dateEndRes - now;
+
+                        if (distance >= 0) {
+                            let cal = distance;
+                            let newDay = (cal - (cal % 86400000)) / 86400000;
+                            cal = cal % 86400000;
+
+                            let newHours = (cal - (cal % 3600000)) / 3600000;
+                            cal = cal % 3600000;
+
+                            let newMinuts = (cal - (cal % 60000)) / 60000;
+                            cal = cal % 60000;
+
+                            let newSecounds = (cal - (cal % 1000)) / 1000;
+
+                            // Update the status text with countdown info
+                            statusText = `${newDay} Days ${newHours} Hours ${newMinuts} Minutes ${newSecounds} Seconds`;
+                        } else {
+                            // If countdown time has passed, set an appropriate message
+                            statusText = "Delivered";
+                        }
+                    }
+
+                    // Add the result to the table
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${number}</td>
+                        <td>${statusText}</td>
+                        <td>${new Date().toLocaleString()}</td>
+                    `;
+                    resultsTable.appendChild(row);
+                } catch (error) {
+                    console.error("Error fetching data for:", number, error);
+                    // Handle errors by showing a message in the status
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${number}</td>
+                        <td>Status: Error fetching data</td>
+                        <td>${new Date().toLocaleString()}</td>
+                    `;
+                    resultsTable.appendChild(row);
+                }
+            }
+        }
+    </script>
+</body>
+</html>
