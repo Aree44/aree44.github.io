@@ -15,6 +15,37 @@
     <h2>Order Tracker</h2>
     <textarea id="trackingNumbers" rows="5" placeholder="Enter tracking numbers, one per line"></textarea>
     <br>
+    <div id="cors-status">Checking access...</div>
+<button onclick="requestCorsAccess()">Request Temporary Access</button>
+
+<script>
+function checkCorsAccess() {
+    fetch("https://cors-anywhere.herokuapp.com/corsdemo", {
+        method: "GET",
+        mode: "cors"
+    })
+    .then(response => response.text())
+    .then(html => {
+        if (html.includes("You currently have temporary access to the demo server")) {
+            document.getElementById("cors-status").innerText = "You have access!";
+        } else {
+            document.getElementById("cors-status").innerText = "Please request access.";
+        }
+    })
+    .catch(error => {
+        document.getElementById("cors-status").innerText = "Please request access.";
+        console.error(error);
+    });
+}
+
+function requestCorsAccess() {
+    window.open("https://cors-anywhere.herokuapp.com/corsdemo", "_blank");
+}
+
+// Check CORS access on page load
+checkCorsAccess();
+</script>
+    
     <button onclick="requestCorsAccess()">Request Access</button>
 
 <script>
