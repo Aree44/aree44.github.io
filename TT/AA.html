@@ -15,6 +15,14 @@
     <h2>Order Tracker</h2>
     <textarea id="trackingNumbers" rows="5" placeholder="Enter tracking numbers, one per line"></textarea>
     <br>
+    <button onclick="requestCorsAccess()">Request Access</button>
+
+<script>
+function requestCorsAccess() {
+    window.open("https://cors-anywhere.herokuapp.com/corsdemo", "_blank");
+}
+</script>
+    
     <button onclick="trackOrders()">Track Orders</button>
     <br><br>
     <table>
