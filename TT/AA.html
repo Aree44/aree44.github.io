@@ -23,12 +23,12 @@ async function checkCorsAccess() {
         const testURL = "https://cors-anywhere.herokuapp.com/https://httpbin.org/get";
         const res = await fetch(testURL);
         if (res.ok) {
-            document.getElementById("cors-status").innerText = "You have access!";
+            document.getElementById("cors-status").innerText = "✅ You have access! ✅";
         } else {
-            document.getElementById("cors-status").innerText = "Please request access.";
+            document.getElementById("cors-status").innerText = "⚠️ Please request access.⚠️";
         }
     } catch (e) {
-        document.getElementById("cors-status").innerText = "Please request access.";
+        document.getElementById("cors-status").innerText = "⚠️ Please request access.⚠️";
         console.error("CORS check error:", e);
     }
 }
@@ -52,7 +52,7 @@ function requestCorsAccess() {
             <tr>
                 <th>Tracking Number</th>
                 <th>Status</th>
-                <th>Last Update</th>
+                <th>Checked On</th>
             </tr>
         </thead>
         <tbody id="orderResults"></tbody>
