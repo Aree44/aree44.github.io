@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Sports Streaming</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.15.4/video-js.min.css" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,10 +24,6 @@
             width: 80%;
             max-width: 800px;
         }
-        video {
-            width: 100%;
-            height: auto;
-        }
         .buttons {
             margin-top: 20px;
         }
@@ -45,7 +42,9 @@
     <h1>Live Sports Streaming</h1>
 
     <div class="video-container">
-        <video id="stream" controls></video>
+        <video id="videoPlayer" class="video-js vjs-default-skin" controls>
+            Your browser does not support the video tag.
+        </video>
     </div>
 
     <div class="buttons">
@@ -53,29 +52,21 @@
         <button onclick="changeStream('koraLaLiga')">Kora La Liga</button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.15.4/video.min.js"></script>
     <script>
-        function changeStream(stream) {
-            const streamLinks = {
-                beinSport: 'http://130.193.165.147/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGA__ih__ap4bPBuiocmugosx5C1DOnSM1714y1i9R3X77BvFO6pZk1tFtUH18sHHqGEiYHC6dTUyPyBP6RGFvSI86Zk950ZK0gOlb9kFjftlYvbM7L5__hi__BiFnJ3h89BZyUCccb4NNsQ3R1Y__hi__xs__ih__LuG5aIYRcRjzJ6xzbFaJGTvR3T34PWO__hi__0tdkhmFrEwpNgiqWX0ZXJGhrzp7nuPhnzgQoozgJXLIwuUcVzsknEL3m7h4__ih__VgUU=---/cache/Bein-Sp1-LB/master.m3u8',
-                koraLaLiga: 'http://130.193.165.162/lbengine/+ph/TIwgi1iByawRhcl9U8O1QWCDSLQknTUJhpNPRXWAn1gvOqqoJATzcjKLGB0QJw__hi__tHGOElRdEXmv0Y2t0kHjrP5KYdt__hi__OK__hi__uyex__ih__uO4M__hi__VUsFRWwkb0dJUxMrIyXSq__hi____ih__Iis7QCx1PaBKkot1en4hVxU9eT__hi__HiDN5gWT3yI16L7WCXtv16nKk5EvelkZXwSLWAjvuG__ih__hwDlB1bWIrEzwwd2reTMa905VPWF1gFWkozPT__ih__yExmjDuM07opdhx9PVpqEmpMEM0SUcZACS__ih__0DIncak6hryi1P7OeLoUi5mtvKNrZ8=---/cache/Kora-La-LB/master.m3u8'
-            };
+        var player = videojs('videoPlayer');
 
-            const videoElement = document.getElementById('stream');
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(streamLinks[stream]);
-                hls.attachMedia(videoElement);
-                hls.on(Hls.Events.MANIFEST_PARSED, function() {
-                    videoElement.play();
-                });
-            }
-            else if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
-                videoElement.src = streamLinks[stream];
-                videoElement.addEventListener('loadedmetadata', function() {
-                    videoElement.play();
-                });
-            }
+        const streamLinks = {
+            beinSport: 'http://130.193.165.147/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGA__ih__ap4bPBuiocmugosx5C1DOnSM1714y1i9R3X77BvFO6pZk1tFtUH18sHHqGEiYHC6dTUyPyBP6RGFvSI86Zk950ZK0gOlb9kFjftlYvbM7L5__hi__BiFnJ3h89BZyUCccb4NNsQ3R1Y__hi__xs__ih__LuG5aIYRcRjzJ6xzbFaJGTvR3T34PWO__hi__0tdkhmFrEwpNgiqWX0ZXJGhrzp7nuPhnzgQoozgJXLIwuUcVzsknEL3m7h4__ih__VgUU=---/cache/Bein-Sp1-LB/master.m3u8',
+            koraLaLiga: 'http://130.193.165.162/lbengine/+ph/TIwgi1iByawRhcl9U8O1QWCDSLQknTUJhpNPRXWAn1gvOqqoJATzcjKLGB0QJw__hi__tHGOElRdEXmv0Y2t0kHjrP5KYdt__hi__OK__hi__uyex__ih__uO4M__hi__VUsFRWwkb0dJUxMrIyXSq__hi____ih__Iis7QCx1PaBKkot1en4hVxU9eT__hi__HiDN5gWT3yI16L7WCXtv16nKk5EvelkZXwSLWAjvuG__ih__hwDlB1bWIrEzwwd2reTMa905VPWF1gFWkozPT__ih__yExmjDuM07opdhx9PVpqEmpMEM0SUcZACS__ih__0DIncak6hryi1P7OeLoUi5mtvKNrZ8=---/cache/Kora-La-LB/master.m3u8'
+        };
+
+        function changeStream(stream) {
+            player.src({
+                type: 'application/x-mpegURL',
+                src: streamLinks[stream]
+            });
+            player.play();
         }
     </script>
 </body>
