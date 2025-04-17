@@ -1,73 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Sports Streaming</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.15.4/video-js.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            text-align: center;
-        }
-        h1 {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-        }
-        .video-container {
-            margin: 20px;
-            display: inline-block;
-            width: 80%;
-            max-width: 800px;
-        }
-        .buttons {
-            margin-top: 20px;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 5px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #ddd;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Live Stream Links</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding-top: 50px;
+      font-family: sans-serif;
+    }
+    a {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      width: 300px;
+      text-align: center;
+      background: #1e90ff;
+      color: white;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+    a:hover {
+      background: #104e8b;
+    }
+  </style>
 </head>
 <body>
-    <h1>Live Sports Streaming</h1>
+  <h1>Click to Watch in Browser or VLC</h1>
 
-    <div class="video-container">
-        <video id="videoPlayer" class="video-js vjs-default-skin" controls>
-            Your browser does not support the video tag.
-        </video>
-    </div>
+  <a href="http://130.193.165.147/lbengine/+ph/GksLn5qUftO__ih__C0Iba8v6zordON4FN7aT2xoiV6ffyNakYGbug__hi__ab2986hcibDTUA53vH__hi__Pa4KVIxw65VjKn4vit8KRA0QTV0NCDYXkLCUmsU4k8JbeWWsaJyRMB__hi__uEEcm3UJ4w0hvfo__hi__IDxXkwKfLI3MX6kg5Yte__ih__ssnH4l9ITdaxx3QHWMmX7uX1vslBprFvTDzmwKKDKZUP3nXEETbTTq7oLDGPwIJ1tgemS6kQqaZIK__ih__00__hi__aYnywotAhRxsf51bKHXG1uxzp4q0vSGBJiwMxed49Nm9HCTzZF4TIozmOQ=---/cache/Bein-Sp1-LB/master.m3u8" target="_blank">
+    Watch BEIN SPORT 1
+  </a>
 
-    <div class="buttons">
-        <button onclick="changeStream('beinSport')">BEINSPORT 1</button>
-        <button onclick="changeStream('koraLaLiga')">Kora La Liga</button>
-    </div>
+  <a href="http://130.193.165.162/lbengine/+ph/TIwgi1iByawRhcl9U8O1QWCDSLQknTUJhpNPRXWAn1gvOqqoJATzcjKLGB0QJw__hi__tHGOElRdEXmv0Y2t0kHjrP5KYdt__hi__OK__hi__uyex__ih__uO4M__hi__VUsFRWwkb0dJUxMrIyXSq__hi____ih__Iis7QCx1PaBKkot1en4hVxU9eT__hi__HiDN5gWT3yI16L7WCXtv16nKk5EvelkZXwSLWAjvuG__ih__hwDlB1bWIrEzwwd2reTMa905VPWF1gFWkozPT__ih__yExmjDuM07opdhx9PVpqEmpMEM0SUcZACS__ih__0DIncak6hryi1P7OeLoUi5mtvKNrZ8=---/cache/Kora-La-LB/master.m3u8" target="_blank">
+    Watch Kora LaLiga
+  </a>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/video.js/7.15.4/video.min.js"></script>
-    <script>
-        var player = videojs('videoPlayer');
-
-        const streamLinks = {
-            beinSport: 'http://130.193.165.147/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGA__ih__ap4bPBuiocmugosx5C1DOnSM1714y1i9R3X77BvFO6pZk1tFtUH18sHHqGEiYHC6dTUyPyBP6RGFvSI86Zk950ZK0gOlb9kFjftlYvbM7L5__hi__BiFnJ3h89BZyUCccb4NNsQ3R1Y__hi__xs__ih__LuG5aIYRcRjzJ6xzbFaJGTvR3T34PWO__hi__0tdkhmFrEwpNgiqWX0ZXJGhrzp7nuPhnzgQoozgJXLIwuUcVzsknEL3m7h4__ih__VgUU=---/cache/Bein-Sp1-LB/master.m3u8',
-            koraLaLiga: 'http://130.193.165.162/lbengine/+ph/TIwgi1iByawRhcl9U8O1QWCDSLQknTUJhpNPRXWAn1gvOqqoJATzcjKLGB0QJw__hi__tHGOElRdEXmv0Y2t0kHjrP5KYdt__hi__OK__hi__uyex__ih__uO4M__hi__VUsFRWwkb0dJUxMrIyXSq__hi____ih__Iis7QCx1PaBKkot1en4hVxU9eT__hi__HiDN5gWT3yI16L7WCXtv16nKk5EvelkZXwSLWAjvuG__ih__hwDlB1bWIrEzwwd2reTMa905VPWF1gFWkozPT__ih__yExmjDuM07opdhx9PVpqEmpMEM0SUcZACS__ih__0DIncak6hryi1P7OeLoUi5mtvKNrZ8=---/cache/Kora-La-LB/master.m3u8'
-        };
-
-        function changeStream(stream) {
-            player.src({
-                type: 'application/x-mpegURL',
-                src: streamLinks[stream]
-            });
-            player.play();
-        }
-    </script>
+  <p style="margin-top: 50px;">Tip: If it doesn't work in your browser, open the link in VLC or IPTV player.</p>
 </body>
 </html>
