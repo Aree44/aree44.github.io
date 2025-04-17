@@ -1,52 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Live TV</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #000;
-      color: #fff;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      padding: 10px;
-    }
-    .channel {
-      background: #111;
-      border-radius: 10px;
-      padding: 10px;
-      text-align: center;
-      transition: 0.3s;
-    }
-    .channel:hover {
-      background: #222;
-    }
-    .channel a {
-      display: block;
-      color: #0f0;
-      font-weight: bold;
-      text-decoration: none;
-      word-break: break-word;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Streaming</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #222;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .video-container {
+            margin: 15px;
+            position: relative;
+            max-width: 100%;
+            max-height: 400px;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            background-color: #111;
+            color: white;
+            padding: 10px;
+            font-size: 14px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                max-width: 100%;
+                max-height: 250px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <h2 style="text-align:center; margin-top: 10px;">Live TV Links</h2>
-  <div class="grid">
-    <div class="channel"><a href="http://130.193.165.147/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGA__ih__ap4bPBuiocmugosx5C1DOnSM1714y1i9R3X77BvFO6pZk1tFtUH18sHHqGEiYHC6dTUyPyBP6RGFvSI86Zk950ZK0gOlb9kFjftlYvbM7L5__hi__BiFnJ3h89BZyUCccb4NNsQ3R1Y__hi__xs__ih__LuG5aIYRcRjzJ6xzbFaJGTvR3T34PWO__hi__0tdkhmFrEwpNgiqWX0ZXJGhrzp7nuPhnzgQoozgJXLIwuUcVzsknEL3m7h4__ih__VgUU=---/cache/Bein-Sp1-LB/master.m3u8" target="_blank">BEINSPORT HD1</a></div>
-    <div class="channel"><a href="http://130.193.165.146/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGA__ih__ap4bPBuiocmugosx5C1K9__hi__g94zm7lrgixgu1mX9RLj22JcO__hi__m5TbkF2b3Rmr1E__hi__mpxa3G6Ylo8FxbhXXp__hi__Po5t__hi__kuqcF17zjTkAHkhNhh6r5yl2uiIx__ih__YhqXzHq8KmpPcRXIMCKKABvs5__hi__sgd7BnmdlwTUO8A2nw4KCzGQlB3HXahqOfCf1kjHdTjfxeptZO8n__hi__Gtwnpq3RWVgCa6Z__hi__qxWhh9PcCQBpikeuqFLS2o8=---/cache/Bein-Sp2-LB/master.m3u8" target="_blank">BEINSPORT HD2</a></div>
-    <div class="channel"><a href="http://130.193.165.146/lbengine/+ph/GksLn5qUftO__ih__C0Iba8v6zordON4FN7aT2xoiV6ffyNakYGbug__hi__ab2986hcibDTUA53vH__hi__Pa4KVIxw65VjKn4vqKh8oFTwjGHwNpT1OilKnSCfeNWKBUes3c6JZApELjxOP4UGxUis9qHzPsnwUv0Pr3dhCFsO1K9PxTi2DbI01eSLInRfQx2UKwxRQ5Y__ih__zZsurqKCJkbYvQItREjcqtfptxuvp2ckTyD__ih__j8Hy7NcD__hi__3W76ki895o7MgqZmj9N5HuSxSpDNVq8Aq__ih__qZIE8i__hi__WBoovAUPKC7YXCfW7T8TTwtLg=---/cache/Bein-Sp3-LB/master.m3u8" target="_blank">BEINSPORT HD3</a></div>
-    <div class="channel"><a href="http://130.193.165.147/lbengine/+ph/GksLn5qUftO__ih__C0Iba8v6zordON4FN7aT2xoiV6ffyNakYGbug__hi__ab2986hcibDTUA53vH__hi__Pa4KVIxw65VjKn4vpDUwmwCcEQl__ih__tzNIfM0p7fACdk1plhcf99eCuylw3OGXcOaxQKg9IzJTR__ih__SAQ8zHl3bMISqX8FMMfbhtDJBigLULY__ih__nBpbwndTP07M6sBmpStZormt5UeXFh0vMWAiumfU3gJYtGWA0ctH8uYpVFwv8GeMNICEKNIsM__hi__KA0lpUUzkwU__hi__GVD4l9bNu2xJqwMbZY2aI__hi__2HXLnKXumZ6zg5jqk=---/cache/Bein-Sp4-LB/master.m3u8" target="_blank">BEINSPORT HD4</a></div>
-    <div class="channel"><a href="http://130.193.165.162/lbengine/+ph/TIwgi1iByawRhcl9U8O1QWCDSLQknTUJhpNPRXWAn1gvOqqoJATzcjKLGB0QJw__hi__tHGOElRdEXmv0Y2t0kHjrP5KYdt__hi__OK__hi__uyex__ih__uO4M__hi__VUsFRWwkb0dJUxMrIyXSq__hi____ih__Iis7QCx1PaBKkot1en4hVxU9eT__hi__HiDN5gWT3yI16L7WCXtv16nKk5EvelkZXwSLWAjvuG__ih__hwDlB1bWIrEzwwd2reTMa905VPWF1gFWkozPT__ih__yExmjDuM07opdhx9PVpqEmpMEM0SUcZACS__ih__0DIncak6hryi1P7OeLoUi5mtvKNrZ8=---/cache/Kora-La-LB/master.m3u8" target="_blank">Kora Laliga</a></div>
-    <div class="channel"><a href="http://130.193.165.147/lbengine/+ph/MLF9U3JBGPAPtOYNWOEFTmBwNgOMiE5MCERCSkzbbqDtmxQ3Hiu6rZ4BkK__hi__7zcZBBVp0aLsDA2n4adw0AJ6kc3c__hi__YLtXkC1QcBkG3T9mYUVvYMEB21KZkCsA8jOYjeDH0UZpl65__hi__Ilwb5U7mRr6Drq7ABtRx__ih__TUWIejXnBxQMj95eFACJXX0rLw2YQCirI4UZso0drzXcfYoRlm2ALY2TVz52NKWfEUB68bBmSgoVEjluLHwGX7IxZpMddmZkOgX__hi__tUKyxZKaki12emGX2tAvMYP8uK__hi__mz2r5Qo20RN__ih__OymI=---/cache/Falcon-Eye-LB/master.m3u8" target="_blank">Falcon Eye 1</a></div>
-    <div class="channel"><a href="http://130.193.165.147/lbengine/+ph/romgdMwYpYOtZqXfWsU4EIiEsxo0t6WSMyLajqfVR3TKXFF1xw7tYOPinAacVIsv2Q4L47aipkzg__ih__8__ih__J1Bi2zpFt1hxRGGL1LTfTTWUXmsReAFcMhPaY1kVNol__hi__34P__ih__DpM__hi__TejYIcRH5YY85dGhnKC2QhzI__ih__fzNu__hi__OpjuwoQk69L0x4BKwOZZeSAeJL2B8A1bAEnmTfpKPUAGHYnRt4UvQppi5Ref__hi__tP__ih__nyss__hi__F4kJPm__hi__8dp8e4ooR__ih__mnaVr__hi__AEoG__hi__Ydp6__ih__N2CSDsOjNnnQyzTVJf8YtjfFyzeRQOE2e7YfY=---/cache/Falcon-Eye-2-LB/master.m3u8" target="_blank">Falcon Eye 2</a></div>
-    <div class="channel"><a href="http://130.193.165.147/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGtBeqPnN9bypEenRdaNIuXGT__ih__pGpUUVB6hplvlvK74Kz__ih__rstILy5eT87ouDJGq4xnY__ih__Bk0AufuRSlr1cHC3R6dQ5DHN8E5MZkqah7kAUOHFzCrh2ueEwkhPAV9PLVuM__hi__RZgSiKWd5AJu92NcM9IWIm31A8WktGe6jO6Df1vPn__hi__rgExhImzzx0Nf8CluDp7D8lND83DP4keyZelHrlq3bN__ih__8wsUwYOY0RN4BT5__ih__zp3KDJ8=---/cache/Falcon-Eye-3-LB/master.m3u8" target="_blank">Falcon Eye 3</a></div>
-  </div>
+    <div class="container">
+        <div class="video-container">
+            <h3>BEINSPORT 1</h3>
+            <iframe src="http://130.193.165.147/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGA__ih__ap4bPBuiocmugosx5C1DOnSM1714y1i9R3X77BvFO6pZk1tFtUH18sHHqGEiYHC6dTUyPyBP6RGFvSI86Zk950ZK0gOlb9kFjftlYvbM7L5__hi__BiFnJ3h89BZyUCccb4NNsQ3R1Y__hi__xs__ih__LuG5aIYRcRjzJ6xzbFaJGTvR3T34PWO__hi__0tdkhmFrEwpNgiqWX0ZXJGhrzp7nuPhnzgQoozgJXLIwuUcVzsknEL3m7h4__ih__VgUU=---/cache/Bein-Sp1-LB/master.m3u8" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <h3>BEINSPORT HD1</h3>
+            <iframe src="http://130.193.165.147/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGA__ih__ap4bPBuiocmugosx5C1DOnSM1714y1i9R3X77BvFO6pZk1tFtUH18sHHqGEiYHC6dTUyPyBP6RGFvSI86Zk950ZK0gOlb9kFjftlYvbM7L5__hi__BiFnJ3h89BZyUCccb4NNsQ3R1Y__hi__xs__ih__LuG5aIYRcRjzJ6xzbFaJGTvR3T34PWO__hi__0tdkhmFrEwpNgiqWX0ZXJGhrzp7nuPhnzgQoozgJXLIwuUcVzsknEL3m7h4__ih__VgUU=---/cache/Bein-Sp1-LB/master.m3u8" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <h3>BEINSPORT HD2</h3>
+            <iframe src="http://130.193.165.146/lbengine/+ph/__hi__JsilhWl7VdmamKU22e38BMgtOflGLGTnCln3kYbHu0oejCDUElFNTGvlq__ih__AadIGA__ih__ap4bPBuiocmugosx5C1K9__hi__g94zm7lrgixgu1mX9RLj22JcO__hi__m5TbkF2b3Rmr1E__hi__mpxa3G6Ylo8FxbhXXp__hi__Po5t__hi__kuqcF17zjTkAHkhNhh6r5yl2uiIx__ih__YhqXzHq8KmpPcRXIMCKKABvs5__hi__sgd7BnmdlwTUO8A2nw4KCzGQlB3HXahqOfCf1kjHdTjfxeptZO8n__hi__Gtwnpq3RWVgCa6Z__hi__qxWhh9PcCQBpikeuqFLS2o8=---/cache/Bein-Sp2-LB/master.m3u8" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <h3>BEINSPORT HD3</h3>
+            <iframe src="http://130.193.165.146/lbengine/+ph/GksLn5qUftO__ih__C0Iba8v6zordON4FN7aT2xoiV6ffyNakYGbug__hi__ab2986hcibDTUA53vH__hi__Pa4KVIxw65VjKn4vqKh8oFTwjGHwNpT1OilKnSCfeNWKBUes3c6JZApELjxOP4UGxUis9qHzPsnwUv0Pr3dhCFsO1K9PxTi2DbI01eSLInRfQx2UKwxRQ5Y__ih__zZsurqKCJkbYvQItREjcqtfptxuvp2ckTyD__ih__j8Hy7NcD__hi__3W76ki895o7MgqZmj9N5HuSxSpDNVq8Aq__ih__qZIE8i__hi__WBoovAUPKC7YXCfW7T8TTwtLg=---/cache/Bein-Sp3-LB/master.m3u8" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <h3>BEINSPORT HD4</h3>
+            <iframe src="http://130.193.165.147/lbengine/+ph/GksLn5qUftO__ih__C0Iba8v6zordON4FN7aT2xoiV6ffyNakYGbug__hi__ab2986hcibDTUA53vH__hi__Pa4KVIxw65VjKn4vpDUwmwCcEQl__ih__tzNIfM0p7fACdk1plhcf99eCuylw3OGXcOaxQKg9IzJTR__ih__SAQ8zHl3bMISqX8FMMfbhtDJBigLULY__ih__nBpbwndTP07M6sBmpStZormt5UeXFh0vMWAiumfU3gJYtGWA0ctH8uYpVFwv8GeMNICEKNIsM__hi__KA0lpUUzkwU__hi__GVD4l9bNu2xJqwMbZY2aI__hi__2HXLnKXumZ6zg5jqk=---/cache/Bein-Sp4-LB/master.m3u8" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <h3>Kora laliga</h3>
+            <iframe src="http://130.193.165.162/lbengine/+ph/TIwgi1iByawRhcl9U8O1QWCDSLQknTUJhpNPRXWAn1gvOqqoJATzcjKLGB0QJw__hi__tHGOElRdEXmv0Y2t0kHjrP5KYdt__hi__OK__hi__uyex__ih__uO4M__hi__VUsFRWwkb0dJUxMrIyXSq__hi____ih__Iis7QCx1PaBKkot1en4hVxU9eT__hi__HiDN5gWT3yI16L7WCXtv16nKk5EvelkZXwSLWAjvuG__ih__hwDlB1bWIrEzwwd2reTMa905VPWF1gFWkozPT__ih__yExmjDuM07opdhx9PVpqEmpMEM0SUcZACS__ih__0DIncak6hryi1P7OeLoUi5mtvKNrZ8=---/cache/Kora-La-LB/master.m3u8" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <h3>Falcon Eye 1</h3>
+            <iframe src="http://130.193.165.147/lbengine/+ph/MLF9U3JBGPAPtOYNWOEFTmBwNgOMiE5MCERCSkzbbqDtmxQ3Hiu6rZ4BkK__hi__7zcZBBVp0aLsDA2n4adw0AJ6kc3c__hi__YLtXkC1QcBkG3T9mYUVvYMEB21KZkCsA8jOYjeDH0UZpl65__hi__Ilwb5U7mRr6Drq7ABtRx__ih__TUWIejXnBxQMj95eFACJXX0rLw2YQCirI4UZso0drzXcfYoRlm2ALY2TVz52NKWfEUB68bBmSgoVEjluLHwGX7IxZpMddmZkOgX__hi__tUKyxZKaki12emGX2tAvMYP8uK__hi__mz2r5Qo20RN__ih__OymI=---/cache/Falcon-Eye-LB/master.m3u8" allowfullscreen></iframe>
+        </div>
+        <div class="video-container">
+            <h3>Falcon Eye 2</h3>
+            <iframe src="http://130.193.165.147/lbengine/+ph/romgdMwYpYOtZqXfWsU4EIiEsxo0t6WSMyLajqfVR3TKXFF1xw7tYOPinAacVIsv2Q4L47aipkzg__ih__8__ih__J1Bi2zpFt1hxRGGL1LTfTTWUXmsReAFcMhPaY1kVNol__hi__34P__ih__DpM__hi__TejYIcRH5YY85dGhnKC2QhzI__ih__fzNu__hi__OpjuwoQk69L0x4BKwOZZeSAeJL2B8A1bAEnmTfpKPUAGHYnRt4UvQppi5Ref__hi__tP__ih__nyss__hi__F4kJPm__hi__8dp8e4ooR__ih__mnaVr__hi__AEoG__hi__Ydp6__ih__N2CSDsOjNnnQyzTVJf8YtjfFyzeRQOE2e7YfY=---/cache/Falcon-Eye-2-LB/master.m3u8" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Created by Ari</p>
+    </div>
 </body>
 </html>
